@@ -1,21 +1,29 @@
 let map = '123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-let maplength = map.length;
 let urllen = 6;
+let curID = 0;
 
 function shortenUrl(id) {
     let url = '';
     while (id != -1) {
-        url = url + map[id % maplength];
-        if (id >= maplength) {
-            id = Math.floor(id / maplength);
+        url = url + map[id % map.length];
+        if (id >= map.length) {
+            id = Math.floor(id / map.length);
         } else {
             id = -1;
         }
     }
-    let toReturn = url;
-    if (url.length < urllen) {
-        toReturn = url + '0'*(urllen - url.length);
+    while (url.length < urllen) {
+        url += '0';
     }
+    return url;
 }
 
-console.log(shortenUrl(1));
+function nexturl(url) {
+    curID++;
+    return shortenUrl(curID);
+}
+
+// console.log(shortenUrl(1));
+// for (let i = 0; i < 1000000; i++) {
+//     console.log(nexturl());
+// }
