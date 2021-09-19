@@ -26,8 +26,13 @@ function nexturl(url) {
     return shortUrl;
 }
 
+function shortToLong(url) {
+    // TODO: check if it actually exists
+    return urlDict[url];
+}
+
 for (let i = 1; i < 10; i++) {
-    url = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 10);
+    url = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 15);
     console.log(nexturl(url));
 }
 
