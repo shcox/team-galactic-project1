@@ -1,6 +1,7 @@
 let map = '123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 let urllen = 6;
-let curID = 0;
+let curID = 100000000;
+let urlDict = {};
 
 function shortenUrl(id) {
     let url = '';
@@ -20,10 +21,18 @@ function shortenUrl(id) {
 
 function nexturl(url) {
     curID++;
-    return shortenUrl(curID);
+    let shortUrl = shortenUrl(curID);
+    urlDict[url] = shortUrl;
+    return shortUrl;
 }
 
-console.log(shortenUrl(1));
-for (let i = 0; i < 100000; i++) {
-     console.log(nexturl());
+for (let i = 1; i < 10; i++) {
+    url = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 10);
+    console.log(nexturl(url));
+}
+
+console.log("______________")
+
+for (let key in urlDict) {
+    console.log(key + ": " + urlDict[key]);
 }
