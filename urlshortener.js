@@ -23,7 +23,7 @@ function nexturl(url) {
     return shortenUrl(curID);
 }
 
-// console.log(shortenUrl(1));
-// for (let i = 0; i < 1000000; i++) {
-//     console.log(nexturl());
-// }
+console.log(shortenUrl(1));
+for (let i = 0; i < 100000; i++) {
+     console.log(nexturl());
+}
