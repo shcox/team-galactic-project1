@@ -19,6 +19,5 @@ function shortenUrl(id) {
 
 export function nexturl(id, url) {
     let shortUrl = shortenUrl(id);
-    urlDict[url] = shortUrl;
     return shortUrl;
 }
