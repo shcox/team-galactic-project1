@@ -1,37 +1,43 @@
+const nexturl = require('./urlshortener')
 const express = require('express')
 const app = express()
 const port = 5000
 
 let counter = 1
 const memory = {}
-
+// this should be a POST
 app.get('/lurl_to_surl', (req, res) => {
 
-    let url = req.query.url
-    let map = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-    let return_object = {}
+    let lurl = req.query.url
+    let surl = urlshortener(counter, lurl)
+    return_object[lurl] = surl;
+    memory[lurl] = surl
 
-    if (memory[url]) {
-        return_object[url] = memory[url]
-    } else {
-        let short_url = ''
-        let n = counter
-        counter++
-
-        while (n > 0) {
-            short_url = short_url + map[n % 62]
-            n = Math.floor(n / 62);
-        }
-
-        while (short_url.length < 6) {
-            short_url + '0'
-        }
-
-        return_object[url] = short_url
-        memory[url] = short_url
-    }
-    
     res.json(return_object)
+    // let map = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    // let return_object = {}
+
+    // if (memory[url]) {
+    //     return_object[url] = memory[url]
+    // } else {
+    //     let short_url = ''
+    //     let n = counter
+    //     counter++
+
+    //     while (n > 0) {
+    //         short_url = short_url + map[n % 62]
+    //         n = Math.floor(n / 62);
+    //     }
+
+    //     while (short_url.length < 6) {
+    //         short_url + '0'
+    //     }
+
+    //     return_object[url] = short_url
+    //     memory[url] = short_url
+    // }
+    
+    // res.json(return_object)
 
 })
 
