@@ -1,46 +1,33 @@
 const shortener = require('./urlshortener')
 const express = require('express')
+
 const app = express()
-const port = 5000
+// we need this so that we can parse POST bodies
+app.use(express.json())
 
 let counter = 1
 const memory = {}
+const port = 5000
 // this should be a POST
-app.get('/lurl_to_surl', (req, res) => {
 
-    let lurl = req.query.url
+app.post('/lurl_post', (req, res) => {
+    let lurl = req.body.name
     let surl = shortener.nexturl(counter, lurl)
-    let return_object = {}
-    return_object[lurl] = surl;
-    memory[lurl] = surl
+    memory[lurl] = surl 
     counter += 1
-    res.json(return_object)
-    // let map = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-    // let return_object = {}
-
-    // if (memory[url]) {
-    //     return_object[url] = memory[url]
-    // } else {
-    //     let short_url = ''
-    //     let n = counter
-    //     counter++
-
-    //     while (n > 0) {
-    //         short_url = short_url + map[n % 62]
-    //         n = Math.floor(n / 62);
-    //     }
-
-    //     while (short_url.length < 6) {
-    //         short_url + '0'
-    //     }
-
-    //     return_object[url] = short_url
-    //     memory[url] = short_url
-    // }
-    
-    // res.json(return_object)
-
+    res.end()
 })
+
+// app.get('/lurl_to_surl', (req, res) => {
+
+//     let lurl = req.query.url
+//     let surl = shortener.nexturl(counter, lurl)
+//     let return_object = {}
+//     return_object[lurl] = surl;
+//     memory[lurl] = surl
+//     counter += 1
+//     res.json(return_object)
+// })
 
 app.get('/surl_to_redirect', (req, res) => {
 
