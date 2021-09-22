@@ -14,6 +14,9 @@ RUN npm install
 # Copy the code into the container
 COPY ./main.js ./main.js
 
+# Copy urlshortener into the container...
+COPY ./urlshortener.js ./urlshortener.js
+
 # our app is running on port 5000 within the container, so need to expose it
 EXPOSE 5000
 

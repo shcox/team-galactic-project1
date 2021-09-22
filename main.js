@@ -1,4 +1,4 @@
-const nexturl = require('./urlshortener')
+const shortener = require('./urlshortener')
 const express = require('express')
 const app = express()
 const port = 5000
@@ -9,10 +9,11 @@ const memory = {}
 app.get('/lurl_to_surl', (req, res) => {
 
     let lurl = req.query.url
-    let surl = urlshortener(counter, lurl)
+    let surl = shortener.nexturl(counter, lurl)
+    let return_object = {}
     return_object[lurl] = surl;
     memory[lurl] = surl
-
+    counter += 1
     res.json(return_object)
     // let map = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
     // let return_object = {}

@@ -16,8 +16,8 @@ function shortenUrl(id) {
     }
     return url;
 }
-
-export function nexturl(id, url) {
+ 
+exports.nexturl = function(id, url) {
     let shortUrl = shortenUrl(id);
     return shortUrl;
 }
