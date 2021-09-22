@@ -8,7 +8,6 @@ app.use(express.json())
 let counter = 1
 const memory = {}
 const port = 5000
-// this should be a POST
 
 app.post('/lurl_post', (req, res) => {
     let lurl = req.body.name
