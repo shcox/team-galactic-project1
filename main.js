@@ -17,23 +17,12 @@ app.post('/lurl_post', (req, res) => {
     res.end()
 })
 
-// app.get('/lurl_to_surl', (req, res) => {
-
-//     let lurl = req.query.url
-//     let surl = shortener.nexturl(counter, lurl)
-//     let return_object = {}
-//     return_object[lurl] = surl;
-//     memory[lurl] = surl
-//     counter += 1
-//     res.json(return_object)
-// })
-
 app.get('/surl_to_redirect', (req, res) => {
 
     let short_url = req.query.url
     let long_url = Object.keys(memory).find(url => memory[url] === short_url)
 
-    res.redirect(long_url)
+    res.status(301).redirect(long_url)
 })
 
 app.get('/find_surl', (req, res) => {
