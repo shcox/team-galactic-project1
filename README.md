@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Creating an API App in Docker
 
 This is a short example on how to create a Node HTTP app server using Express and Docker.
@@ -245,3 +246,6 @@ To stop the server do this:
 ```
 $ npm run docker_stop
 ```
+=======
+Team Galactic url shortener 1 submission
+>>>>>>> master

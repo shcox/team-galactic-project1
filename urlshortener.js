@@ -1,7 +1,10 @@
 let map = '123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 let urllen = 6;
+<<<<<<< HEAD
 let curID = 100000000;
 let urlDict = {};
+=======
+>>>>>>> master
 
 function shortenUrl(id) {
     let url = '';
@@ -18,6 +21,7 @@ function shortenUrl(id) {
     }
     return url;
 }
+<<<<<<< HEAD
 
 function nexturl(url) {
     curID++;
@@ -40,4 +44,10 @@ console.log("______________")
 
 for (let key in urlDict) {
     console.log(key + ": " + urlDict[key]);
+=======
+ 
+exports.nexturl = function(id, url) {
+    let shortUrl = shortenUrl(id);
+    return shortUrl;
+>>>>>>> master
 }
