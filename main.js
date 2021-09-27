@@ -14,7 +14,9 @@ app.post('/lurl_post', (req, res) => {
     let surl = shortener.nexturl(counter, lurl)
     memory[lurl] = surl 
     counter += 1
-    res.end()
+    let return_object = {}
+    return_object[lurl] = surl
+    res.json(return_object)
 })
 
 app.get('/surl_to_redirect', (req, res) => {
@@ -33,7 +35,7 @@ app.get('/find_surl', (req, res) => {
 })
 
 app.get('/', (req, res) => {
-    res.json({ hello: 'world'})
+    res.json({ hello: 'wrld'})
 })
 
 app.listen(port, '0.0.0.0', () => {
